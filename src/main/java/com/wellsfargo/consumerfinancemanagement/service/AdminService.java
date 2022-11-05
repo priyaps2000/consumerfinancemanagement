@@ -24,4 +24,8 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		arepo.changeActStatus(userName, response);
 	}
+	
+	public String findPasswordByadminName(String userName) {
+		return arepo.findPasswordByaName(userName);
+	}
 }

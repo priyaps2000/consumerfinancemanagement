@@ -50,6 +50,15 @@ public class UserController {
 		return u;
 	}
 	
+	@PostMapping(value = "/checkUser/{userName}")
+	public String checkUser(@PathVariable("userName") String userName, @RequestBody String password) {
+		String pwd = uservice.findPasswordByuserName(userName);
+		if(pwd.equals(password))
+			return("success");
+		else
+			return("failure");
+	}
+	
 	@PostMapping(value = "/updatePassword/{userName}")
 	public User updatePassword(@PathVariable("userName") String userName, @RequestBody String password) {
 		System.out.println(userName + " " +  password);

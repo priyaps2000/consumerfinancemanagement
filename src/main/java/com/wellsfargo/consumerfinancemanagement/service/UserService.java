@@ -1,5 +1,7 @@
 package com.wellsfargo.consumerfinancemanagement.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,15 @@ public class UserService {
 		// TODO Auto-generated method stub
 		urepo.updatePwdByuName(userName, password);
 		System.out.println(userName + " " +  password);
+	}
+	
+	public List<User> uDashboard() {
+		// TODO Auto-generated method stub
+		return urepo.uDashboard();
+	}
+	
+	public String findPasswordByuserName(String userName) {
+		return urepo.findPasswordByuName(userName);
 	}
 
 //	User getById(int id)
