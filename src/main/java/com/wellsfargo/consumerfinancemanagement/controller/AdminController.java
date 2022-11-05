@@ -1,5 +1,7 @@
 package com.wellsfargo.consumerfinancemanagement.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +34,20 @@ public class AdminController {
 		a.setPassword(admin.getPassword());
 		
 		return aservice.registerUser(a); // invoke service method
+	}
+	
+	@PostMapping(value = "/checkAdmin/{userName}")
+	public String checkAdmin(@PathVariable("userName") String adminName, @RequestBody String password) {
+		String pwd = aservice.findPasswordByadminName(adminName);
+		if(pwd.equals(password))
+			return("success");
+		else
+			return("failure");
+	}
+	
+	@PostMapping(value = "/admin/dashboard")
+	public List<User> dashBoard() {
+		return uservice.uDashboard();
 	}
 	
 	@PostMapping(value = "/admin/ActivationStatus/{userName}")
