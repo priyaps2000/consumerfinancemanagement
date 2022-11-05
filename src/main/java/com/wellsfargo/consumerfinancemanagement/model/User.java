@@ -35,6 +35,10 @@ public class User {
 	private String ifscCode;
 	
 	private String accountNo;
+	
+	private String docUpload;
+	
+	private String actvnStatus;
 
 	public User() {
 		super();
@@ -128,6 +132,23 @@ public class User {
 		this.accountNo = accountNo;
 	}
 	
+	public String getDocUpload() {
+		return docUpload;
+	}
 	
+	public void setDocUpload(String docUpload) {
+		this.docUpload = docUpload;
+	}
+	
+	public String getActvnStatus()
+	{
+		return actvnStatus;
+	}
+	
+	/*
+	 *public void setActvnStatus(String actvnStatus) {
+		this.actvnStatus = actvnStatus;
+	} 
+	 * */
 	
 }
