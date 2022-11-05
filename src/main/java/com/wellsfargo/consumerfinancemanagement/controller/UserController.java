@@ -38,15 +38,9 @@ public class UserController {
 		u1.setIfscCode(user.getIfscCode());
 		u1.setAccountNo(user.getAccountNo());
 		
-//		return u1;
-		
 		return uservice.registerUser(u1); // invoke service method
 	}
 	
-//	@GetMapping("/{}id")
-//	public User getUserById(@PathVariable int id) {
-//		return uservice.getById(id);
-//	}
 	
 	@GetMapping(value = "/find/{userName}")
 	public User changePassword(@PathVariable("userName") String userName) {
