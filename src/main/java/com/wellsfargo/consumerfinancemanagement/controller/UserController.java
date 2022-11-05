@@ -37,6 +37,8 @@ public class UserController {
 		u1.setBank(user.getBank());
 		u1.setIfscCode(user.getIfscCode());
 		u1.setAccountNo(user.getAccountNo());
+		u1.setDocUpload(user.getDocUpload());
+		u1.setActvnStatus("Pending");
 		
 		return uservice.registerUser(u1); // invoke service method
 	}
