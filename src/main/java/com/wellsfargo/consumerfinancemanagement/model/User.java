@@ -15,7 +15,8 @@ public class User {
 	private Long userId;
 	
 	private String name;
-	
+
+	@Column(unique=True)
 	private String phoneNo;
 	
 	@Column(unique=True)
@@ -35,6 +36,12 @@ public class User {
 	private String ifscCode;
 	
 	private String accountNo;
+	
+	private String docUpload;
+
+	private String actvnStatus;
+	
+	
 
 	public User() {
 		super();
@@ -128,6 +135,32 @@ public class User {
 		this.accountNo = accountNo;
 	}
 	
-	
+	/**
+	 * @return the docUpload
+	 */
+	public String getDocUpload() {
+		return docUpload;
+	}
+
+	/**
+	 * @param docUpload the docUpload to set
+	 */
+	public void setDocUpload(String docUpload) {
+		this.docUpload = docUpload;
+	}
+
+	/**
+	 * @return the actvnStatus
+	 */
+	public String getActvnStatus() {
+		return actvnStatus;
+	}
+
+	/**
+	 * @param actvnStatus the actvnStatus to set
+	 */
+	public void setActvnStatus(String actvnStatus) {
+		this.actvnStatus = actvnStatus;
+	}
 	
 }
