@@ -3,9 +3,12 @@ package com.wellsfargo.consumerfinancemanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.consumerfinancemanagement.model.User;
@@ -34,9 +37,28 @@ public class UserController {
 		u1.setBank(user.getBank());
 		u1.setIfscCode(user.getIfscCode());
 		u1.setAccountNo(user.getAccountNo());
-
-		u1= uservice.registerUser(u1); // invoke service method
 		
-		return u1;
+//		return u1;
+		
+		return uservice.registerUser(u1); // invoke service method
+	}
+	
+//	@GetMapping("/{}id")
+//	public User getUserById(@PathVariable int id) {
+//		return uservice.getById(id);
+//	}
+	
+	@GetMapping(value = "/find/{userName}")
+	public User changePassword(@PathVariable("userName") String userName) {
+		User u = uservice.findUserByuserName(userName);
+		return u;
+	}
+	
+	@PostMapping(value = "/updatePassword/{userName}")
+	public User updatePassword(@PathVariable("userName") String userName, @RequestBody String password) {
+		System.out.println(userName + " " +  password);
+		uservice.updatePwdByuName(userName, password);
+		User u = uservice.findUserByuserName(userName);
+		return u;
 	}
 }
