@@ -41,7 +41,7 @@ public class User {
 
 	private String actvnStatus;
 	
-	
+	private String resetToken;
 
 	public User() {
 		super();
@@ -161,6 +161,14 @@ public class User {
 	 */
 	public void setActvnStatus(String actvnStatus) {
 		this.actvnStatus = actvnStatus;
+	}
+	
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
 	}
 	
 }
