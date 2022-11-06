@@ -13,16 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Product")
 public class Product implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-//	@SequenceGenerator(
-//	        name="ADDRESS_SEQUENCE_GENERATOR",
-//	        sequenceName="ADDRESS_SEQ"
-//	    )
-	    @Id
+	@Id
 	@Column(name="productID", unique=true)
 	private Long ProductId;
 	
