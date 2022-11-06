@@ -46,7 +46,7 @@ public class UserService {
 		return urepo.findByEmail(email);
 	}
 
-	public Optional<User> findUserByResetToken(String resetToken) {
+	public User findUserByResetToken(String resetToken) {
 		return urepo.findByResetToken(resetToken);
 	}
 	
