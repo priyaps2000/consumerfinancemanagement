@@ -57,61 +57,22 @@ public class PasswordController {
 					emailService.sendEmail(passwordResetEmail);
 
 					// Add success message to view
-					return("A password reset link has been sent to " + userEmail);
+					return("A password reset token has been sent to " + userEmail + ". Enter the token and new password to proceed");
 				}
 				
 	}
 	
-	@GetMapping(value = "/reset/{token}")
-	public String resetPassword(@PathVariable("token") String token) {
-		User user = userService.findUserByResetToken(token);
+	@PostMapping(value = "/reset/{token}")
+	public String resetPassword(ModelAndView modelAndView, @PathVariable("token") String token, @RequestBody String password) {
+		String user = userService.findUserByResetToken(token);
+		
 		if(user==null) {
-			
+			return("Oops!  This is an invalid password reset token.");
 		}
 		else {
-			System.out.println("initial " + user.getResetToken());
-			user.setResetToken(null);
-			System.out.println("final " + user.getResetToken());
+			userService.updateUserToken(token);
+			userService.updatePwdByuName(user, password);
 		}
 		return "yes";
 	}
-	
-
-	
-	
-//	@PostMapping(value = "/reset")
-//	public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
-//
-//		// Find the user associated with the reset token
-//		Optional<User> user = userService.findUserByResetToken(requestParams.get("token"));
-//
-//		// This should always be non-null but we check just in case
-//		if (user.isPresent()) {
-//			
-//			User resetUser = user.get(); 
-//            
-//			// Set new password    
-//            resetUser.setPassword(requestParams.get("password"));
-//            
-//			// Set the reset token to null so it cannot be used again
-//			resetUser.setResetToken(null);
-//
-//			// Save user
-//			userService.saveUser(resetUser);
-//
-//			// In order to set a model attribute on a redirect, we must use
-//			// RedirectAttributes
-//			redir.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
-//
-//			modelAndView.setViewName("redirect:login");
-//			return modelAndView;
-//			
-//		} else {
-//			modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
-//			modelAndView.setViewName("resetPassword");	
-//		}
-//		
-//		return modelAndView;
-//   }
-	
 }

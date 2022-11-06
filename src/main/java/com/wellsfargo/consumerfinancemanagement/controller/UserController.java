@@ -61,7 +61,6 @@ public class UserController {
 	
 	@PostMapping(value = "/updatePassword/{userName}")
 	public User updatePassword(@PathVariable("userName") String userName, @RequestBody String password) {
-		System.out.println(userName + " " +  password);
 		uservice.updatePwdByuName(userName, password);
 		User u = uservice.findUserByuserName(userName);
 		return u;

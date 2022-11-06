@@ -46,12 +46,17 @@ public class UserService {
 		return urepo.findByEmail(email);
 	}
 
-	public User findUserByResetToken(String resetToken) {
+	public String findUserByResetToken(String resetToken) {
 		return urepo.findByResetToken(resetToken);
 	}
 	
 	public void saveUser(User user) {
 		urepo.save(user);
+	}
+
+	public void updateUserToken(String userToken) {
+		urepo.updateUserToken(userToken);
+		
 	}
 
 //	User getById(int id)
