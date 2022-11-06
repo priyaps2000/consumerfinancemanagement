@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.consumerfinancemanagement.model.Admin;
+import com.wellsfargo.consumerfinancemanagement.model.Card;
 import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.service.AdminService;
+import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
 @RestController // generate & manage REST API in json format
@@ -25,6 +27,9 @@ public class AdminController {
 	@Autowired
 	private UserService uservice;
 	
+	
+	@Autowired
+	private CardService cservice;
 	
 	/*POST - http://localhost:8082/consumerfinancemanagement/api/user */
 	@PostMapping("/admin")		
@@ -55,6 +60,10 @@ public class AdminController {
 	public User updateActivationStatus(@PathVariable("userName") String userName, @RequestBody String response) {
 		aservice.changeActStatus(userName, response);
 		User u = uservice.findUserByuserName(userName);
+		if(u.getActvnStatus().equals("Activated"))
+		{
+			Card c = cservice.activateCard(u);
+		}
 		return u;
 	}
 }
