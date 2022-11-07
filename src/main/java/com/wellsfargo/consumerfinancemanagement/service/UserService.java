@@ -1,6 +1,7 @@
 package com.wellsfargo.consumerfinancemanagement.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -38,6 +39,24 @@ public class UserService {
 	
 	public String findPasswordByuserName(String userName) {
 		return urepo.findPasswordByuName(userName);
+	}
+	
+	public User findUserByEmail(String email) {
+		System.out.println(urepo.findByEmail(email) + email);
+		return urepo.findByEmail(email);
+	}
+
+	public String findUserByResetToken(String resetToken) {
+		return urepo.findByResetToken(resetToken);
+	}
+	
+	public void saveUser(User user) {
+		urepo.save(user);
+	}
+
+	public void updateUserToken(String userToken) {
+		urepo.updateUserToken(userToken);
+		
 	}
 
 //	User getById(int id)

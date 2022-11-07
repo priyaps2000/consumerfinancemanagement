@@ -1,6 +1,7 @@
 package com.wellsfargo.consumerfinancemanagement.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -25,4 +26,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query(value = "SELECT * FROM user u", nativeQuery = true)
 	List<User> uDashboard();
+	
+	@Query(value = "SELECT * FROM user u WHERE u.email_id = ?1", nativeQuery = true)
+	User findByEmail(String email);
+	
+	@Query(value = "SELECT user_name FROM user u WHERE u.reset_token = ?1", nativeQuery = true)
+	String findByResetToken(String resetToken);
+	
+	@Modifying(clearAutomatically = true)
+	@Query(value = "UPDATE user SET reset_token=null WHERE reset_token = ?1", nativeQuery = true)
+	void updateUserToken(String userToken);
 }
