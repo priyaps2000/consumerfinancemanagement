@@ -36,13 +36,13 @@ public class CardService {
 		c.setCardType(user.getCardType());
 		if(user.getCardType().equals("Gold"))
 		{
-			c.setLimit(60000);
+			c.setCardLimit(60000);
 		}
 		else
 		{
-			c.setLimit(100000);
+			c.setCardLimit(100000);
 		}
-		c.setTotalCredit(c.getLimit());
+		c.setTotalCredit(c.getCardLimit());
 		c.setCreditUsed(0);
 		c.setValidity(curMonth + "/" + valYear);	
 		return crepo.save(c);
@@ -53,4 +53,13 @@ public class CardService {
 		// TODO Auto-generated method stub
 		return crepo.findCardByuserName(userName);
 	}
+
+	public int getAvailableLimit(String username) {
+		return crepo.getAvailableLimit(username);
+	}
+
+	public void debitAmount(String username, int amountPaid) {
+		crepo.debitAmount(username, amountPaid);
+	}
+
 }

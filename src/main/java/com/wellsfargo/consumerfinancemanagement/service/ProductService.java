@@ -30,4 +30,9 @@ public class ProductService {
 		// TODO Auto-generated method stub
 		return prepo.getOne();
 	}
+
+	public int getProductCost(String productId) {
+		prepo.updateProductPurchaseCount(productId);
+		return(prepo.getProductPrice(productId));
+	}
 }
