@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,18 +19,18 @@ public class Card implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="cardNo", unique=true)
+	@Column(unique=true)
 	private Long cardNo;
 	
 	private String validity;
 	
 	private String cardType;
 	
-	private Integer limit;
+	private int cardLimit;
 	
-	private Integer totalCredit;
+	private int totalCredit;
 	
-	private Integer creditUsed;
+	private int creditUsed;
 	
 	@Column(unique=true)
 	private String userName;
@@ -81,15 +84,15 @@ public class Card implements Serializable {
 	/**
 	 * @return the limit
 	 */
-	public Integer getLimit() {
-		return limit;
+	public Integer getCardLimit() {
+		return cardLimit;
 	}
 
 	/**
 	 * @param limit the limit to set
 	 */
-	public void setLimit(Integer limit) {
-		this.limit = limit;
+	public void setCardLimit(Integer limit) {
+		this.cardLimit = limit;
 	}
 
 	/**

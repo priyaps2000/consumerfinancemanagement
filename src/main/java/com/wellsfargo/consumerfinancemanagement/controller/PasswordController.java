@@ -73,6 +73,6 @@ public class PasswordController {
 			userService.updateUserToken(token);
 			userService.updatePwdByuName(user, password);
 		}
-		return "yes";
+		return "Your password has been reset";
 	}
 }
