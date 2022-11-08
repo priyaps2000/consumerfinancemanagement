@@ -23,6 +23,7 @@ import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.service.EmailService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
 @RequestMapping(value="/api/password")
 public class PasswordController {
