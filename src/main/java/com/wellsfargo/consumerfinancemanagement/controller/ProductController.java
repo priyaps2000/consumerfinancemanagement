@@ -15,6 +15,7 @@ import com.wellsfargo.consumerfinancemanagement.model.Product;
 import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.service.ProductService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
 @RequestMapping(value="/api/product")
 public class ProductController {
