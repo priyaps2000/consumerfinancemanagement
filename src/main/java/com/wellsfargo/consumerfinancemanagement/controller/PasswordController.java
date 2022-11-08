@@ -24,7 +24,7 @@ import com.wellsfargo.consumerfinancemanagement.service.EmailService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
 @RestController // generate & manage REST API in json format
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/password")
 public class PasswordController {
 	@Autowired
 	private UserService userService;
@@ -32,7 +32,7 @@ public class PasswordController {
 	@Autowired
 	private EmailService emailService;
 	
-	@PostMapping(value="checkEmail/{email}")
+	@PostMapping(value="/checkEmail/{email}")
 	public String processForgotPasswordForm(@PathVariable("email")  String userEmail, HttpServletRequest request) {
 		// Lookup user in database by e-mail
 				User optional = userService.findUserByEmail(userEmail);

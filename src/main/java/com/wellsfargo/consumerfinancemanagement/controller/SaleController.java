@@ -2,6 +2,8 @@ package com.wellsfargo.consumerfinancemanagement.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.lang.Math;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ import com.wellsfargo.consumerfinancemanagement.service.ProductService;
 import com.wellsfargo.consumerfinancemanagement.service.SaleService;
 
 @RestController // generate & manage REST API in json format
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/sale")
 public class SaleController {
 	
 	@Autowired
@@ -66,5 +68,23 @@ public class SaleController {
 		s1.setAmountpaid(amountPaid);
 		sservice.registerSale(s1);
 		return("Order Placed!");
+	}
+	
+	@PostMapping("/refresh")
+	public void refresh() {
+		List<Sale> lsale = sservice.getSaleData();
+		
+		Date curr = new Date();
+		
+		long diff;
+		
+		for(Sale s: lsale) {
+			diff = TimeUnit.DAYS.convert(Math.abs(curr.getTime() - s.getPurchaseDate().getTime()), TimeUnit.MILLISECONDS);
+			float temp = s.getTotalAmount()/s.getTenurePeriod();
+			if(s.getAmountpaid() < (1+diff/30)*temp) {
+				cservice.debitAmount(s.getUserName(), (int)Math.ceil(temp));
+				sservice.amountpaid(s.getUserName(), (int)Math.ceil(temp));
+			}
+		}
 	}
 }

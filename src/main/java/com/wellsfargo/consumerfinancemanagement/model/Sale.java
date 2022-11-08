@@ -2,6 +2,7 @@ package com.wellsfargo.consumerfinancemanagement.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,9 @@ public class Sale {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int saleId;
-	
+
 	private String userName;
-	
+
 	private String productId;
 	
 	private int tenurePeriod;

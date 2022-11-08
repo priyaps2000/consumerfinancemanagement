@@ -62,4 +62,9 @@ public class CardService {
 		crepo.debitAmount(username, amountPaid);
 	}
 
+	public void payDebit(String userName, int amount) {
+		// TODO Auto-generated method stub
+		crepo.payDebit(userName, amount);
+	}
+
 }

@@ -15,7 +15,7 @@ import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
 @RestController // generate & manage REST API in json format
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/user")
 public class UserController {
 
 	@Autowired
@@ -23,7 +23,7 @@ public class UserController {
 	
 	
 	/*POST - http://localhost:8082/consumerfinancemanagement/api/user */
-	@PostMapping("/user")		
+	@PostMapping("/")		
 	public User registerUser(@Validated @RequestBody User user) {
 		User u1=new User();
 

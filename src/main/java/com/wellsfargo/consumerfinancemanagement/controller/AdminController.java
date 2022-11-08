@@ -19,7 +19,7 @@ import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
 @RestController // generate & manage REST API in json format
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/admin")
 public class AdminController {
 	@Autowired
 	private AdminService aservice;
@@ -32,7 +32,7 @@ public class AdminController {
 	private CardService cservice;
 	
 	/*POST - http://localhost:8082/consumerfinancemanagement/api/user */
-	@PostMapping("/admin")		
+	@PostMapping("/")		
 	public Admin registerUser(@Validated @RequestBody Admin admin) {
 		Admin a = new Admin();
 		
@@ -51,12 +51,12 @@ public class AdminController {
 			return("failure");
 	}
 	
-	@GetMapping(value = "/admin/dashboard")
+	@GetMapping(value = "/dashboard")
 	public List<User> dashBoard() {
 		return uservice.uDashboard();
 	}
 	
-	@PostMapping(value = "/admin/ActivationStatus/{userName}")
+	@PostMapping(value = "/ActivationStatus/{userName}")
 	public User updateActivationStatus(@PathVariable("userName") String userName, @RequestBody String response) {
 		aservice.changeActStatus(userName, response);
 		User u = uservice.findUserByuserName(userName);
