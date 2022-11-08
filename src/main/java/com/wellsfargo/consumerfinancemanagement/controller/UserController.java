@@ -45,14 +45,19 @@ public class UserController {
 	
 	
 	@GetMapping(value = "/find/{userName}")
-	public User changePassword(@PathVariable("userName") String userName) {
+	public User findUser(@PathVariable("userName") String userName) {
 		User u = uservice.findUserByuserName(userName);
 		return u;
 	}
 	
 	@PostMapping(value = "/checkUser/{userName}")
 	public String checkUser(@PathVariable("userName") String userName, @RequestBody String password) {
-		String pwd = uservice.findPasswordByuserName(userName);
+		System.out.println("userName " + userName);
+		System.out.println("password "+password);
+		User usr = uservice.findPasswordByuserName(userName);
+		if(usr == null)
+			return "failure";
+		String pwd = usr.getPassword();
 		if(pwd.equals(password))
 			return("success");
 		else
