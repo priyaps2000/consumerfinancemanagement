@@ -22,6 +22,7 @@ import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.ProductService;
 import com.wellsfargo.consumerfinancemanagement.service.SaleService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
 @RequestMapping(value="/api/sale")
 public class SaleController {
