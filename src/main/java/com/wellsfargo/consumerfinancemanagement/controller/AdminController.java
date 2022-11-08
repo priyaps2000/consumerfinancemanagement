@@ -18,6 +18,7 @@ import com.wellsfargo.consumerfinancemanagement.service.AdminService;
 import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
 @RequestMapping(value="/api/admin")
 public class AdminController {
