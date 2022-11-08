@@ -3,6 +3,7 @@ package com.wellsfargo.consumerfinancemanagement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,6 @@ import com.wellsfargo.consumerfinancemanagement.model.Card;
 import com.wellsfargo.consumerfinancemanagement.model.Sale;
 import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.SaleService;
-import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
