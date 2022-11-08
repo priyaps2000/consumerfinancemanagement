@@ -15,15 +15,16 @@ import com.wellsfargo.consumerfinancemanagement.model.Product;
 import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.service.ProductService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/product")
 public class ProductController {
 	@Autowired
 	private ProductService pservice;
 	
 	
 	/*POST - http://localhost:8082/consumerfinancemanagement/api/user */
-	@PostMapping("/product")		
+	@PostMapping("/")		
 	public Product AddProduct(@Validated @RequestBody Product product) {
 		Product p = new Product();
 		

@@ -37,7 +37,7 @@ public class UserService {
 		return urepo.uDashboard();
 	}
 	
-	public String findPasswordByuserName(String userName) {
+	public User findPasswordByuserName(String userName) {
 		return urepo.findPasswordByuName(userName);
 	}
 	

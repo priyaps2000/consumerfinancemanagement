@@ -19,5 +19,7 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 	@Query(value = "UPDATE card SET credit_used=credit_used+?2 WHERE user_name = ?1", nativeQuery = true)
 	public void debitAmount(String username, int amountPaid);
 
-
+	@Modifying(clearAutomatically = true)
+	@Query(value = "UPDATE card SET credit_used=credit_used-?2 WHERE user_name = ?1", nativeQuery = true)
+	public void payDebit(String userName, int amount);
 }

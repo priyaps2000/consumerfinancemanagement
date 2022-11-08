@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController // generate & manage REST API in json format
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/user")
 public class UserController {
 
 	@Autowired
@@ -23,7 +24,7 @@ public class UserController {
 	
 	
 	/*POST - http://localhost:8082/consumerfinancemanagement/api/user */
-	@PostMapping("/user")		
+	@PostMapping("/")		
 	public User registerUser(@Validated @RequestBody User user) {
 		User u1=new User();
 
@@ -45,14 +46,19 @@ public class UserController {
 	
 	
 	@GetMapping(value = "/find/{userName}")
-	public User changePassword(@PathVariable("userName") String userName) {
+	public User findUser(@PathVariable("userName") String userName) {
 		User u = uservice.findUserByuserName(userName);
 		return u;
 	}
 	
 	@PostMapping(value = "/checkUser/{userName}")
 	public String checkUser(@PathVariable("userName") String userName, @RequestBody String password) {
-		String pwd = uservice.findPasswordByuserName(userName);
+		System.out.println("userName " + userName);
+		System.out.println("password "+password);
+		User usr = uservice.findPasswordByuserName(userName);
+		if(usr == null)
+			return "failure";
+		String pwd = usr.getPassword();
 		if(pwd.equals(password))
 			return("success");
 		else

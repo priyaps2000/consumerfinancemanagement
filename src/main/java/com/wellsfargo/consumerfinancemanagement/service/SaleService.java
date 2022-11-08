@@ -25,4 +25,14 @@ public class SaleService {
 		return srepo.getProductListByUsername(userName);
 	}
 
+	public List<Sale> getSaleData() {
+		// TODO Auto-generated method stub
+		return srepo.getSaleData();
+	}
+
+	public void amountpaid(String userName, int amount) {
+		// TODO Auto-generated method stub
+		srepo.amountpaid(userName, amount);
+	}
+
 }

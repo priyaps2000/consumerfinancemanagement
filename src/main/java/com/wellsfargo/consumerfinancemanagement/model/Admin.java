@@ -8,14 +8,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Admin {
-	private static final boolean True = false;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long AdminId;
 	
 	
-	@Column(unique=True)
+	@Column(unique=true)
 	private String adminuName;
 	
 	private String password;

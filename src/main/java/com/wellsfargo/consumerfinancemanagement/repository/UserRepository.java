@@ -21,8 +21,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "UPDATE USER SET password = ?2 WHERE user_name = ?1", nativeQuery = true)
 	void updatePwdByuName(String userName, String password);
 	
-	@Query(value = "SELECT password FROM user u WHERE u.user_Name = :userName", nativeQuery = true)
-	public String findPasswordByuName(@Param("userName") String userName);
+	@Query(value = "SELECT * FROM user u WHERE u.user_Name = :userName", nativeQuery = true)
+	public User findPasswordByuName(@Param("userName") String userName);
 
 	@Query(value = "SELECT * FROM user u", nativeQuery = true)
 	List<User> uDashboard();
