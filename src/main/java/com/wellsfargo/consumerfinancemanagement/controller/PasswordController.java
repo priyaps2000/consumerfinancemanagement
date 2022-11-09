@@ -67,7 +67,7 @@ public class PasswordController {
 		}
 		else {
 			userService.updateUserToken(token);
-			userService.updatePwdByuName(user, password);
+			userService.updatePwdByuName(user, User.encrypt(password));
 		}
 		return "Your password has been reset";
 	}

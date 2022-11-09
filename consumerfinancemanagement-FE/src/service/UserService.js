@@ -10,7 +10,7 @@ class UserService {
 
     postUsers(req) {
         
-        return axios.post(USER_URL + "user", JSON.parse(req));
+        return axios.post(USER_URL + "user/", JSON.parse(req));
     }
 }
 

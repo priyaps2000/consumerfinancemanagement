@@ -8,7 +8,19 @@ export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 class AuthenticationService{
 
     loginUser(user){
-        return axios.post(API_URL+"checkUser/"+user["email"], user["password"], {headers: {"Content-Type": "text/plain"}});
+        return axios.post(API_URL+"user/checkUser/"+user["email"], user["password"], {headers: {"Content-Type": "text/plain"}});
+    }
+
+    loginAdmin(user){
+        return axios.post(API_URL+"admin/checkAdmin/"+user["username"], user["password"], {headers: {"Content-Type": "text/plain"}});
+    }
+
+    sendOTP(user){
+        return axios.post(API_URL+"password/checkEmail/"+user["emailid"], {headers: {"Content-Type": "text/plain"}});
+    }
+
+    verifyOTP(user){
+        return axios.post(API_URL+"password/reset/"+user["token"], user["password"], {headers: {"Content-Type": "text/plain"}});
     }
 
     registerDealer(dealer){

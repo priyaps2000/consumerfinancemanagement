@@ -131,8 +131,6 @@ export default class Register extends Component {
             errors["cpassword"] = "*Please enter password to confirm.";
         }
 
-        console.log(this.state.fields.password);
-        console.log(this.state.fields.cpassword);
         if (this.state.fields.password !== this.state.fields.cpassword) {
             formIsValid = false;
             errors["password"] = "*Please enter same password.";    
