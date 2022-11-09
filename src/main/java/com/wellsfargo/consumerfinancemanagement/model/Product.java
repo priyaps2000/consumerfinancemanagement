@@ -25,7 +25,7 @@ public class Product implements Serializable {
 	
 	private String ProductURL;
 	
-	private Long Cost;
+	private int Cost;
 	
 	private int purchaseCount;
 
@@ -66,11 +66,11 @@ public class Product implements Serializable {
 		ProductURL = productURL;
 	}
 
-	public Long getCost() {
+	public int getCost() {
 		return Cost;
 	}
 
-	public void setCost(Long cost) {
+	public void setCost(int cost) {
 		Cost = cost;
 	}
 	

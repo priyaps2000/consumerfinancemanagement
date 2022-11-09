@@ -19,6 +19,8 @@ public class Sale {
 
 	private String productId;
 	
+	private String productName;
+	
 	private int tenurePeriod;
 	
 	private int totalAmount;
@@ -41,6 +43,14 @@ public class Sale {
 
 	public String getUserName() {
 		return userName;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public void setUserName(String userName) {

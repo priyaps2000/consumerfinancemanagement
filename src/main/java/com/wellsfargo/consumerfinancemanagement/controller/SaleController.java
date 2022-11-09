@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.consumerfinancemanagement.model.Card;
+import com.wellsfargo.consumerfinancemanagement.model.Product;
 import com.wellsfargo.consumerfinancemanagement.model.Sale;
 import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.ProductService;
@@ -40,11 +41,11 @@ public class SaleController {
 			return("Oops! Your card is not active, Please contact admin.");
 		}
 		
-		int productCost = pservice.getProductCost(productId);
+		Product product = pservice.getProductCost(productId);
 		int availableLimit = userCard.getTotalCredit()-userCard.getCreditUsed();
 		
 		
-		if(productCost > availableLimit ) {
+		if(product.getCost() > availableLimit ) {
 			return("Oops! You don't have enough amount in you card to buy this product.");
 		}
 		
@@ -52,12 +53,13 @@ public class SaleController {
 		
 		s1.setUserName(username);
 		s1.setProductId(productId);
+		s1.setProductName(product.getProductName());
 		s1.setTenurePeriod(tenurePeriod);
 
 	    s1.setPurchaseDate(new Date());
 		s1.getPurchaseDate();
 		
-		s1.setTotalAmount(productCost);
+		s1.setTotalAmount(product.getCost());
 		
 		int amountPaid = (int)Math.ceil(s1.getTotalAmount()/tenurePeriod);
 		cservice.debitAmount(username, amountPaid);

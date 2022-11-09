@@ -112,7 +112,7 @@ export class Login extends Component{
                     action="/PasswordResetForm"
                     >Change Password</button>
                     <Link to={"forgotpassword"}>Forgot Password</Link><br></br>
-                    <Link to={"adminlogin"}>Are you an Admin ? Login Here</Link>
+                    <Link to={"admin"}>Are you an Admin ? Login Here</Link>
                     
                     </form>
                 </div>

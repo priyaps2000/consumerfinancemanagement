@@ -1,0 +1,59 @@
+.title{
+    text-align: center;
+}
+
+/* .card{
+    align-items: center;
+} */
+
+.card-details{
+    border: 2px solid black;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.amount-details{
+    padding-top: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+h3{
+    padding-top: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+.navbar{
+    position: absolute;
+    width: 100%;
+    background-color: #07b357;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    top:0;
+    right: 0;
+
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+
+.text>* {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+}
+
+.table{
+    margin: auto;
+    padding-top: 30px;
+}
+
+.logout{
+    padding-left: 40px;
+}

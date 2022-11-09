@@ -31,7 +31,7 @@ public class ProductService {
 		return prepo.getOne();
 	}
 
-	public int getProductCost(String productId) {
+	public Product getProductCost(String productId) {
 		prepo.updateProductPurchaseCount(productId);
 		return(prepo.getProductPrice(productId));
 	}
