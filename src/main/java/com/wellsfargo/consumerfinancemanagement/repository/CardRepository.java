@@ -9,7 +9,7 @@ import com.wellsfargo.consumerfinancemanagement.model.Card;
 
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-	@Query(value = "SELECT * FROM card c WHERE c.user_Name = :userName", nativeQuery = true)
+	@Query(value = "SELECT * FROM card c WHERE c.user_Name = :userName LIMIT 1", nativeQuery = true)
 	public Card findCardByuserName(@Param("userName") String userName);
 
 	@Query(value = "SELECT c.total_credit-c.credit_used FROM card c WHERE c.user_Name =?1", nativeQuery = true)
