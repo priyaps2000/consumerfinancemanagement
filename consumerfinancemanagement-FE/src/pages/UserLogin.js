@@ -1,6 +1,8 @@
 import React,{Component} from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import withNavigateHook from '../components/withNavigateHook';
+import Navbar from '../components/Navbar';
+import '../style/UserLogin.css'
  
 
 import AuthenticationService from "../service/AuthenticationService";
@@ -94,32 +96,37 @@ export class Login extends Component{
     render(){
         return(
             <div>
-                <h1>User Login</h1>
-                <div className="container">
-                    <form>
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                    <div className = "form-group">
-                        <label>User Name:</label>  
-                        <input type="text" name="email" className="form-control" value={this.state.email}
-                        onChange={this.handleChange} validations={[required]} />
-                        <div className="errorMsg">{this.state.error.email}</div>
-                    </div>
-                    <div className = "form-group">
-                    <label>Password:</label>
-                    <input type="password" name="password" className="form-control" value={this.state.password}
-                        onChange={this.handleChange} validations={[required]}/>
-                    <div className="errorMsg">{this.state.error.password}</div>
-                    </div>
-                    <button className="btn btn-success" onClick={this.checkLogin}>Login</button>
-                    <button className="btn btn-success" 
-                    action="/PasswordResetForm"
-                    >Change Password</button>
-                    <Link to={"forgotpassword"}>Forgot Password</Link><br></br>
-                    <Link to={"admin"}>Are you an Admin ? Login Here</Link>
+                <Navbar />
+                <div className="user-login-container">
                     
-                    </form>
-                </div>
+                    <div className="user-login">
+                        <h1>User Login</h1>
+                        <form>
+                        {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                        {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                        <div className = "form-group">
+                            <label>User Name:</label>  
+                            <input type="text" name="email" className="form-control" value={this.state.email}
+                            onChange={this.handleChange} validations={[required]} />
+                            <div className="errorMsg">{this.state.error.email}</div>
+                        </div>
+                        <div className = "form-group">
+                        <label>Password:</label>
+                        <input type="password" name="password" className="form-control" value={this.state.password}
+                            onChange={this.handleChange} validations={[required]}/>
+                        <div className="errorMsg">{this.state.error.password}</div>
+                        </div>
+                        <button className="btn btn-success user-login-button" onClick={this.checkLogin}>Login</button>
+                        {/* <button className="btn btn-success" 
+                        action="/PasswordResetForm"
+                        >Change Password</button> */}
+                        <Link to={"forgotpassword"}>Forgot Password</Link><br></br>
+                        <Link to={"admin"}>Are you an Admin ? Login Here</Link>
+                        </form>
+                    </div>
+
+                    
+                </div>   
             </div>
         );
     }

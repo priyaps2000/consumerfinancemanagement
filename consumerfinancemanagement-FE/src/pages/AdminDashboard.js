@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import axios from 'axios';
+import '../style/AdminDashboard.css'
 
 export default class AdminDashboard extends Component{
-
     constructor(props) {
         super(props)
         this.state ={
@@ -13,7 +13,7 @@ export default class AdminDashboard extends Component{
         }
         this.fetchUserTable = this.fetchUserTable.bind(this);
         this.activateUser = this.activateUser.bind(this);
-        this.collectEMI = this.activateUser.bind(this);
+        this.collectEMI = this.collectEMI.bind(this);
     }
 
     componentDidMount() {
@@ -29,21 +29,21 @@ export default class AdminDashboard extends Component{
         for (let i = 0; i < this.state.userCount; i++) {
             if(this.state.users[i]){    
                 rows.push(<tr>
-                    <th>{this.state.users[i]["name"]}</th>
-                    <th>{this.state.users[i]["userId"]}</th>
-                    <th>{this.state.users[i]["userName"]}</th>
-                    <th>{this.state.users[i]["emailId"]} </th>
-                    <th>{this.state.users[i]["phoneNo"]}</th>                        
-                    <th>{this.state.users[i]["address"]}</th>
-                    <th>{this.state.users[i]["bank"]}</th>
-                    <th>{this.state.users[i]["accountNo"]}</th>                      
-                    <th>{this.state.users[i]["cardType"]}</th> 
-                    <th>{this.state.users[i]["docUpload"]}</th> 
-                    <th><button data-username={this.state.users[i]["userName"]} onClick={(e)=>this.activateUser(e)}>{this.state.users[i]["actvnStatus"]}</button></th>
+                    <td>{this.state.users[i]["name"]}</td>
+                    <td>{this.state.users[i]["userId"]}</td>
+                    <td>{this.state.users[i]["userName"]}</td>
+                    <td>{this.state.users[i]["emailId"]} </td>
+                    <td>{this.state.users[i]["phoneNo"]}</td>                        
+                    <td>{this.state.users[i]["address"]}</td>
+                    <td>{this.state.users[i]["bank"]}</td>
+                    <td>{this.state.users[i]["accountNo"]}</td>                      
+                    <td>{this.state.users[i]["cardType"]}</td> 
+                    <td>{this.state.users[i]["docUpload"]}</td> 
+                    <td><button className="admin-dashboard-button" data-username={this.state.users[i]["userName"]} onClick={(e)=>this.activateUser(e)}>{this.state.users[i]["actvnStatus"]}</button></td>
                 </tr>);
             }
         }
-            return <table className="table">
+            return <table className="user-table">
             <tr>
                 <th>Name</th>
                 <th>User ID</th>
@@ -67,7 +67,8 @@ export default class AdminDashboard extends Component{
         }
 
         collectEMI(){
-            // axios.post("http://localhost:8080/consumerfinancemanagement/api/sale/refresh")
+            axios.post("http://localhost:8080/consumerfinancemanagement/api/sale/refresh")
+             console.log("YES")
         }
    
           
@@ -75,12 +76,17 @@ export default class AdminDashboard extends Component{
     render(){
         return(
             <div>
-                <h1>ADMIN DASHBOARD</h1>
-                <button onClick={()=> this.collectEMI()}>Collect EMI of current month</button>
-                <div className="users">
-                    {this.fetchUserTable()}
+                <div className="admin-dashboard-navbar">
+                    <p className="admin-tagline">Financial Solutions for your Personal Needs</p>
+                    <p>Hi Admin</p>
                 </div>
-                
+                <div className="admin-dashboard-container">
+                    <h1>ADMIN DASHBOARD</h1>
+                    <button className="admin-dashboard-button" onClick={()=> this.collectEMI()}>Collect EMI of current month</button>
+                    <div className="users">
+                        {this.fetchUserTable()}
+                    </div>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,21 @@
+.user-login{
+    box-shadow: -5px 5px 15px #8080801c;
+    padding: 40px;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+  }
+
+.user-login-container {
+    margin-top:200px;
+}
+
+.user-login-button {
+  margin: 20px;
+  background-color: #16557d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  border-radius: 12px;
+}

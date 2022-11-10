@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import '../style/register.css'
+import '../style/RegisterUser.css'
 import AuthenticationService from '../service/AuthenticationService'
 import UserService from '../service/UserService'
+import Navbar from '../components/Navbar';
 
 export default class Register extends Component {
 
@@ -187,8 +188,9 @@ export default class Register extends Component {
   render() {
     return (
         <div>
+            <Navbar />
                 <br></br>
-                <div className = "container">
+                <div className = "register-container">
                         <div className = "row">
                             <div className = "card col-md-12 offset-md-3 offset-md-3">
                                <h1 className="text-center">User Registration</h1>
@@ -267,9 +269,9 @@ export default class Register extends Component {
                                                  <div className="errorMsg">{this.state.errors.ifsc}</div>
                                         </div>
             
-                                        <button className="btn btn-danger" onClick={this.resetForm} style={{marginLeft: "10px"}}>Reset</button>
+                                        <button className="btn btn-danger register-button" onClick={this.resetForm} style={{marginLeft: "10px"}}>Reset</button>
                                         
-                                        <input type="submit" onClick={this.registerUser.bind(this)} className="btn btn-success"  value="Register"/>
+                                        <button type="submit" onClick={this.registerUser.bind(this)} className="btn btn-success register-button">Register</button>
                                       
                                     </form>
                                 </div>

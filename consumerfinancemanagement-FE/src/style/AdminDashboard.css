@@ -1,0 +1,55 @@
+.admin-dashboard-navbar{
+    position: absolute;
+    width: 100%;
+    background-color: #2b2b5b;
+    top: 0;
+    right: 0;
+    justify-content: space-between;
+    display: flex;
+    color: white;
+    font-size: 20px;
+}
+
+.admin-dashboard-navbar>*{
+    padding: 10px;
+    margin:20px;
+}
+
+.admin-dashboard-container{
+    margin-top: 150px;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.admin-dashboard-button{
+    background-color: #16557d; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.user-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .user-table td, .purchased-table th {
+    border: 1px solid #8080801c;
+    padding: 8px;
+  }
+  
+  .user-table tr:nth-child(even){background-color: #8080801c;}
+  
+  .user-table tr:hover {background-color: #699eaa;}
+  
+  .user-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #16557d;
+    color: white;
+  }

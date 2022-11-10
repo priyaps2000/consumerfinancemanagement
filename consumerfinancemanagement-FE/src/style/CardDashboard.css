@@ -2,15 +2,12 @@
     text-align: center;
 }
 
-/* .card{
-    align-items: center;
-} */
-
 .card-details{
-    border: 2px solid black;
     max-width: 400px;
     margin: auto;
     text-align: center;
+    box-shadow: -5px 5px 15px #8080801c;
+    padding: 20px;
 }
 
 .amount-details{
@@ -19,21 +16,19 @@
     text-align: center;
 }
 
-h3{
+h2{
     padding-top: 30px;
     margin: auto;
     text-align: center;
 }
 
-.navbar{
+.card-dashboard-navbar{
     position: absolute;
     width: 100%;
-    background-color: #07b357;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    top:0;
+    background-color: #2b2b5b;;
+    top: 0;
     right: 0;
-
+    justify-content: space-between;
 }
 
 .text{
@@ -57,3 +52,47 @@ h3{
 .logout{
     padding-left: 40px;
 }
+
+.card-dashboard-button{
+  margin: 20px;
+  background-color: #16557d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.card-dashboard-container{
+    margin-top: 120px;
+    display: grid;
+    justify-content: center;
+}
+
+.card{
+    margin-top: 20px;
+}
+
+.purchased-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 800px;
+    margin-top: 20px;
+  }
+  
+  .purchased-table td, .purchased-table th {
+    border: 1px solid #8080801c;
+    padding: 8px;
+  }
+  
+  .purchased-table tr:nth-child(even){background-color: #8080801c;}
+  
+  .purchased-table tr:hover {background-color: #699eaa;}
+  
+  .purchased-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #16557d;
+    color: white;
+  }

@@ -1,25 +1,23 @@
-.navbar{
+.productlist-navbar{
     position: absolute;
     width: 100%;
-    background-color: #07b357;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    top:0;
+    background-color: #2b2b5b;;
+    top: 0;
     right: 0;
-
+    justify-content: space-between;
 }
 
-.text{
+.productlist-text{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     color: white;
 }
 
-.text>* {
+.productlist-text>* {
     padding-left: 40px;
     padding-right: 40px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .logout{
@@ -29,6 +27,7 @@
 .product-container {
     padding-top: 30px;
     margin: auto;
+    margin-top: 100px;
 }
 
 .product {
@@ -46,3 +45,14 @@
 .product-details{
     padding-left: 40px;
 }
+
+.productlist-button{
+  margin: 20px;
+  background-color: #16557d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
