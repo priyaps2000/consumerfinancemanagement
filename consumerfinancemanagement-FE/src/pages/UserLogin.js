@@ -105,13 +105,13 @@ export class Login extends Component{
                         {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                         {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                         <div className = "form-group">
-                            <label>User Name:</label>  
+                            <label>User Name</label>  <br></br>
                             <input type="text" name="email" className="form-control" value={this.state.email}
                             onChange={this.handleChange} validations={[required]} />
                             <div className="errorMsg">{this.state.error.email}</div>
                         </div>
                         <div className = "form-group">
-                        <label>Password:</label>
+                        <label>Password</label><br></br>
                         <input type="password" name="password" className="form-control" value={this.state.password}
                             onChange={this.handleChange} validations={[required]}/>
                         <div className="errorMsg">{this.state.error.password}</div>

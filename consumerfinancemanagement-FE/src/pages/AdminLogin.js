@@ -100,13 +100,13 @@ export class AdminLogin extends Component{
                         {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                         {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                         <div className = "form-group">
-                            <label>Admin UserName:</label>  
+                            <label>Admin UserName</label> <br></br> 
                             <input type="text" name="username" className="form-control" value={this.state.username}
                             onChange={this.handleChange} validations={[required]} />
                             <div className="errorMsg">{this.state.error.username}</div>
                         </div>
                         <div className = "form-group">
-                        <label>Password:</label>
+                        <label>Password</label><br></br>
                         <input type="password" name="password" className="form-control" value={this.state.password}
                             onChange={this.handleChange} validations={[required]}/>
                         <div className="errorMsg">{this.state.error.password}</div>

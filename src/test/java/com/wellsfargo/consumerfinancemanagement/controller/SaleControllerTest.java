@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 
 import com.wellsfargo.consumerfinancemanagement.model.Sale;
@@ -23,7 +24,7 @@ import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.repository.UserRepository;
 import com.wellsfargo.consumerfinancemanagement.service.SaleService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
-
+@SpringBootTest
 class SaleControllerTest {
 	@Mock
 	private SaleService sservice;

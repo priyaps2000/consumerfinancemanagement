@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 
 import com.wellsfargo.consumerfinancemanagement.model.Card;
@@ -25,7 +26,7 @@ import com.wellsfargo.consumerfinancemanagement.repository.UserRepository;
 import com.wellsfargo.consumerfinancemanagement.service.CardService;
 import com.wellsfargo.consumerfinancemanagement.service.SaleService;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
-
+@SpringBootTest
 class CardControllerTest {
 	@Mock
 	private CardService cservice;

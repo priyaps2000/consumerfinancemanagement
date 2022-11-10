@@ -159,7 +159,7 @@ export class ForgotPassword extends Component{
                         <form>
                         {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                         <div className = "form-group">
-                            <label>User Email-ID:</label>  
+                            <label>User Email-ID</label>  <br></br>
                             <input type="text" name="emailid" className="form-control" value={this.state.emailid}
                             onChange={this.handleChange} validations={[required]} />
                             <div className="errorMsg">{this.state.error.emailid}</div>
@@ -167,19 +167,19 @@ export class ForgotPassword extends Component{
                         <button className="btn btn-success forgot-button" onClick={this.sendOTP}>Send OTP</button>
 
                         <div className = "form-group">
-                        <label>OTP:</label>
+                        <label>OTP</label><br></br>
                         <input type="password" name="token" className="form-control" value={this.state.token}
                             onChange={this.handleChange} validations={[required]}/>
                         <div className="errorMsg">{this.state.error.token}</div>
                         </div><br></br>
                         <div className = "form-group">
-                        <label>New Password:</label>
+                        <label>New Password</label><br></br>
                         <input type="password" name="password" className="form-control" value={this.state.password}
                             onChange={this.handleChange} validations={[required]}/>
                             <div className="errorMsg">{this.state.error.password}</div>
                         </div>
                         <div className = "form-group">
-                        <label>Confirm Password:</label>
+                        <label>Confirm Password</label><br></br>
                         <input type="password" name="cpassword" className="form-control" value={this.state.cpassword}
                             onChange={this.handleChange} validations={[required]}/>
                         <div className="errorMsg">{this.state.error.cpassword}</div>

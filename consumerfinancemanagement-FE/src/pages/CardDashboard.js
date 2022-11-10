@@ -22,11 +22,12 @@ export class CardDashboard extends Component{
         this.fetchPurchasedProduct=this.fetchPurchasedProduct.bind(this);
         this.logout = this.logout.bind(this);
         this.dashboard = this.dashboard.bind(this);
+        this.Paycard = this.Paycard.bind(this);
     }
 
     logout(){
         sessionStorage.clear()
-        this.props.navigation('/login');
+        this.props.navigation('/');
     }
 
     componentDidMount() {
@@ -76,6 +77,11 @@ export class CardDashboard extends Component{
             {rows}
             </table>
     } 
+
+    Paycard(){
+        axios.post("http://localhost:8080/consumerfinancemanagement/api/card/paydebit/" + this.state.username +"/" + this.state.creditUsed)
+        window.location.reload();
+    }
     
     dashboard(){
         this.props.navigation('/users/productlist');
@@ -114,6 +120,7 @@ export class CardDashboard extends Component{
                     <p>CREDIT USED: Rs. {this.state.creditUsed}/-</p>
                     <p>REMAINING CREDIT: Rs. {this.state.cardLimit - this.state.creditUsed}/-</p>
                 </div>
+                    <button className="product-button" onClick={() => this.Paycard()}>Pay Credit Card</button>
                 <h2>PRODUCTS PURCHASED</h2>
                 {this.fetchPurchasedProduct()}
                 </div>

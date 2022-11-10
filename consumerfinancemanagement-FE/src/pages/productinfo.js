@@ -35,7 +35,7 @@ export class Productinfo extends Component{
 
     logout(){
         sessionStorage.clear()
-        this.props.navigation('/login');
+        this.props.navigation('/');
     }
 
     dashboard(){
@@ -119,7 +119,7 @@ export class Productinfo extends Component{
                     </div>
                     
                     <div className = "emi-container">
-                        <label> Slect EMI Option: </label>
+                        <label> Select EMI Option: </label>
                         <select name="card" className="form-control" 
                             value={this.state.EMI} onChange={(e) => this.setState({EMI : e.target.value})}>
                                 <option>Select</option>

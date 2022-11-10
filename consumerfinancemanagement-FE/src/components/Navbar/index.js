@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink as Link } from 'react-router-dom';
-import 'D:/Java Bootcamp WF/consumerfinancemanagement/consumerfinancemanagement-FE/src/style/Navbar.css';
+import '../../style/Navbar.css';
 
 const Navbar = () => {
 return (

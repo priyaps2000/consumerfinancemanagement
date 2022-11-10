@@ -20,7 +20,7 @@ export class ProductList extends Component{
 
     logout(){
         sessionStorage.clear()
-        this.props.navigation('/login');
+        this.props.navigation('/');
     }
 
     dashboard(){

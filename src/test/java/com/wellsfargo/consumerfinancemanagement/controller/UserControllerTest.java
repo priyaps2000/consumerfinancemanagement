@@ -18,13 +18,14 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 
 import com.wellsfargo.consumerfinancemanagement.model.User;
 import com.wellsfargo.consumerfinancemanagement.repository.UserRepository;
 import com.wellsfargo.consumerfinancemanagement.service.UserService;
 //import com.wellsfargo.consumerfinancemanagement.controller.UserController.registerUser;
-
+@SpringBootTest
 class UserControllerTest {
 
 	@Mock

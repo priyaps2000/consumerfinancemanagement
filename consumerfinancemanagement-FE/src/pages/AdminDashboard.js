@@ -1,8 +1,9 @@
 import React,{Component} from "react";
 import axios from 'axios';
 import '../style/AdminDashboard.css'
+import withNavigateHook from '../components/withNavigateHook';
 
-export default class AdminDashboard extends Component{
+export class AdminDashboard extends Component{
     constructor(props) {
         super(props)
         this.state ={
@@ -21,6 +22,11 @@ export default class AdminDashboard extends Component{
         axios.get("http://localhost:8080/consumerfinancemanagement/api/admin/dashboard").then((res)=>{
             this.setState({userCount: res["data"].length}, ()=>{this.setState({users: res["data"]})});
         })
+    }
+
+    logout(){
+        sessionStorage.clear()
+        this.props.navigation('/');
     }
 
     fetchUserTable(){
@@ -79,6 +85,7 @@ export default class AdminDashboard extends Component{
                 <div className="admin-dashboard-navbar">
                     <p className="admin-tagline">Financial Solutions for your Personal Needs</p>
                     <p>Hi Admin</p>
+                    <button className="logout productlist-button" onClick={() => this.logout()}>Logout</button>
                 </div>
                 <div className="admin-dashboard-container">
                     <h1>ADMIN DASHBOARD</h1>
@@ -91,5 +98,6 @@ export default class AdminDashboard extends Component{
         );
     }
 }
+export default withNavigateHook(AdminDashboard);
 
 

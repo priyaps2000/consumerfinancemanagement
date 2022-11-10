@@ -199,49 +199,49 @@ export default class Register extends Component {
                                     <form method="post"  name="userRegistrationForm"  onSubmit= {this.registerDealer}>
                                     
                                         <div className = "form-group">
-                                            <label> Name: </label>
+                                            <label> Name </label><br></br>
                                             <input placeholder="Full Name" name="name" className="form-control" 
                                                 value={this.state.fields.name} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.name}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Email: </label>
+                                            <label> Email </label><br></br>
                                             <input placeholder="Email Id" name="email" className="form-control" 
                                                 value={this.state.fields.email} onChange={this.handleChange}/>
                                                 <div className="errorMsg">{this.state.errors.email}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Phone : </label>
+                                            <label> Phone  </label><br></br>
                                             <input placeholder="Phone" name="phoneNo" className="form-control" 
                                                 value={this.state.fields.phoneNo} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.phoneNo}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> User Name : </label>
+                                            <label> User Name  </label><br></br>
                                             <input placeholder="userName" name="userName" className="form-control" 
                                                 value={this.state.fields.userName} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.userName}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Password: </label>
+                                            <label> Password </label><br></br>
                                             <input type="password" placeholder="Password" name="password" className="form-control"
                                                 value={this.state.fields.password} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.password}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Confirm Password: </label>
+                                            <label> Confirm Password </label><br></br>
                                             <input type="cpassword" placeholder="cpassword" name="cpassword" className="form-control"
                                                 value={this.state.fields.cPassword} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.cpassword}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Address: </label>
+                                            <label> Address </label><br></br>
                                             <input type="address" placeholder="address" name="address" className="form-control"
                                                 value={this.state.fields.address} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.address}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Card Type : </label>
+                                            <label> Card Type </label><br></br>
                                             <select name="card" className="form-control" 
                                                 value={this.state.fields.card} onChange={this.handleChange}>
                                                     <option>Select Card</option>
@@ -250,20 +250,21 @@ export default class Register extends Component {
                                            </select>
                                            
                                         </div>
+                                        <br></br>
                                         <div className = "form-group">
-                                            <label> Select Bank: </label>
+                                            <label> Select Bank </label><br></br>
                                             <input type="bank" placeholder="bank" name="bank" className="form-control"
                                                 value={this.state.fields.bank} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.bank}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Savings Account No: </label>
+                                            <label> Savings Account No </label><br></br>
                                             <input type="savings" placeholder="savings" name="savings" className="form-control"
                                                 value={this.state.fields.savings} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.savings}</div>
                                         </div>
                                         <div className = "form-group">
-                                            <label> IFSC Code: </label>
+                                            <label> IFSC Code </label><br></br>
                                             <input type="ifsc" placeholder="ifsc" name="ifsc" className="form-control"
                                                 value={this.state.fields.ifsc} onChange={this.handleChange}/>
                                                  <div className="errorMsg">{this.state.errors.ifsc}</div>
