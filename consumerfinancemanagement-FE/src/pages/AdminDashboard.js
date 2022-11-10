@@ -1,28 +1,28 @@
 import React,{Component} from "react";
 import axios from 'axios';
- 
- 
+
 export default class AdminDashboard extends Component{
- 
+
     constructor(props) {
         super(props)
         this.state ={
             users:[],
-            userCount: '',
-            status: ''
+            userCount: '', 
+            status: '',
+            rerender: false
         }
         this.fetchUserTable = this.fetchUserTable.bind(this);
+        this.activateUser = this.activateUser.bind(this);
+        this.collectEMI = this.activateUser.bind(this);
     }
- 
+
     componentDidMount() {
- 
+
         axios.get("http://localhost:8080/consumerfinancemanagement/api/admin/dashboard").then((res)=>{
-            this.setState({userCount: res["data"].length}, ()=>{this.setState({users: res["data"]}, ()=>{
-                this.fetchUserTable()
-            })});
+            this.setState({userCount: res["data"].length}, ()=>{this.setState({users: res["data"]})});
         })
     }
- 
+
     fetchUserTable(){
         const rows = [];
         console.log("count ", this.state.userCount)
@@ -37,9 +37,9 @@ export default class AdminDashboard extends Component{
                     <th>{this.state.users[i]["address"]}</th>
                     <th>{this.state.users[i]["bank"]}</th>
                     <th>{this.state.users[i]["accountNo"]}</th>                      
-                    <th>{this.state.users[i]["cardType"]}</th>
-                    <th>{this.state.users[i]["docUpload"]}</th>
-                    <th><button>{this.state.users[i]["actvnStatus"]}</button></th>
+                    <th>{this.state.users[i]["cardType"]}</th> 
+                    <th>{this.state.users[i]["docUpload"]}</th> 
+                    <th><button data-username={this.state.users[i]["userName"]} onClick={(e)=>this.activateUser(e)}>{this.state.users[i]["actvnStatus"]}</button></th>
                 </tr>);
             }
         }
@@ -60,19 +60,30 @@ export default class AdminDashboard extends Component{
             {rows}
             </table>
         }
+
+        activateUser(e){
+            axios.post("http://localhost:8080/consumerfinancemanagement/api/admin/ActivationStatus/"+e.target.getAttribute('data-username'), "Activated", {headers: {"Content-Type": "text/plain"}})
+            window.location.reload();
+        }
+
+        collectEMI(){
+            // axios.post("http://localhost:8080/consumerfinancemanagement/api/sale/refresh")
+        }
    
-         
- 
+          
+
     render(){
         return(
             <div>
                 <h1>ADMIN DASHBOARD</h1>
-                <button>Collect EMI of current month</button>
+                <button onClick={()=> this.collectEMI()}>Collect EMI of current month</button>
                 <div className="users">
                     {this.fetchUserTable()}
                 </div>
-               
+                
             </div>
         );
     }
 }
+
+
