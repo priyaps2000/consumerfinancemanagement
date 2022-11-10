@@ -21,6 +21,7 @@ export class CardDashboard extends Component{
         }
         this.fetchPurchasedProduct=this.fetchPurchasedProduct.bind(this);
         this.logout = this.logout.bind(this);
+        this.dashboard = this.dashboard.bind(this);
     }
 
     logout(){
@@ -58,14 +59,14 @@ export class CardDashboard extends Component{
         for (let i = 0; i < this.state.productCount; i++) {
             if(this.state.products[i]){
                 rows.push(<tr>
-                        <th>{this.state.products[i]["productId"]}</th> 
-                        <th>{this.state.products[i]["purchaseDate"].substring(0,10)}</th> 
-                        <th>{this.state.products[i]["totalAmount"]} </th>
-                        <th>{this.state.products[i]["amountpaid"]}</th>
+                        <td>{this.state.products[i]["productId"]}</td> 
+                        <td>{this.state.products[i]["purchaseDate"].substring(0,10)}</td> 
+                        <td>{this.state.products[i]["totalAmount"]} </td>
+                        <td>{this.state.products[i]["amountpaid"]}</td>
                     </tr>);
             }
         }
-        return <table className="table">
+        return <table className="purchased-table">
             <tr>
                 <th>Product</th>
                 <th>Purchase Date</th>
@@ -74,20 +75,30 @@ export class CardDashboard extends Component{
             </tr>
             {rows}
             </table>
-    }      
+    } 
+    
+    dashboard(){
+        this.props.navigation('/users/productlist');
+    }
+    
+    productList(){
+
+    }
 
     render(){
         return(
             <div>
-                <div className="navbar">
+                <div className="card-dashboard-navbar">
+                
                     <div className="text">
-                        <a>Products</a>
+                        <button className="card-dashboard-button" onClick={() => this.dashboard()}>Products</button>
                         <div className="user">
                             <a>Hi {this.state.name}</a>
-                            <button className="logout" onClick={() => this.logout()}>Logout</button>
+                            <button className="card-dashboard-button logout" onClick={() => this.logout()}>Logout</button>
                         </div>
                     </div>
                 </div>
+                <div className="card-dashboard-container">
                 <h2 className="title">DASHBOARD</h2>
                 <div className="card">
                     <div className="card-details">
@@ -95,16 +106,17 @@ export class CardDashboard extends Component{
                         <p>Username: {this.state.username}</p>
                         <p>Valid till: {this.state.validTill}</p>
                         <p>Card Type: {this.state.cardType}</p>
-                        <p>{this.state.status}</p>
+                        <p>Status: {this.state.status}</p>
                     </div>
                 </div>
                 <div className="amount-details">
-                    <p>TOTAL CREDIT: Rs. {this.state.cardLimit}</p>
-                    <p>CREDIT USED: Rs. {this.state.creditUsed}</p>
-                    <p>REMAINING CREDIT: Rs. {this.state.cardLimit - this.state.creditUsed}</p>
+                    <p>TOTAL CREDIT: Rs. {this.state.cardLimit}/-</p>
+                    <p>CREDIT USED: Rs. {this.state.creditUsed}/-</p>
+                    <p>REMAINING CREDIT: Rs. {this.state.cardLimit - this.state.creditUsed}/-</p>
                 </div>
-                <h3>PRODUCTS PURCHASED</h3>
+                <h2>PRODUCTS PURCHASED</h2>
                 {this.fetchPurchasedProduct()}
+                </div>
             </div>
         );
     }

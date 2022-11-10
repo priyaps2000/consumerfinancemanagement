@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import axios from 'axios';
 import '../style/ProductList.css';
 import withNavigateHook from '../components/withNavigateHook';
+import { NavLink as Link } from 'react-router-dom';
 
 export class ProductList extends Component{
 
@@ -54,7 +55,7 @@ export class ProductList extends Component{
                             <p className="product-name">{this.state.productList[i]["productName"]}</p>
                             <p>Product details: {this.state.productList[i]["productDetails"]}</p>
                             <p>Cost: Rs. {this.state.productList[i]["cost"]}/-</p>
-                            <button data-product-id={this.state.productList[i]["productId"]} onClick={(e) => {this.gotoProductinfo(e)}}>Buy Now</button>
+                            <button className="productlist-button" data-product-id={this.state.productList[i]["productId"]} onClick={(e) => {this.gotoProductinfo(e)}}>Buy Now</button>
                         </div>
                     </div>);
             }
@@ -65,12 +66,12 @@ export class ProductList extends Component{
     render(){
         return(
             <div>
-                <div className="navbar">
-                    <div className="text">
-                        <button className="logout" onClick={() => this.dashboard()}>CardDashboard</button>
+                <div className="productlist-navbar">
+                    <div className="productlist-text">
+                        <button className="logout productlist-button" onClick={() => this.dashboard()}>CardDashboard</button>
                         <div className="user">
                             <a>Hi {this.state.name}</a>
-                            <button className="logout" onClick={() => this.logout()}>Logout</button>
+                            <button className="logout productlist-button" onClick={() => this.logout()}>Logout</button>
                         </div>
                     </div>
                 </div>

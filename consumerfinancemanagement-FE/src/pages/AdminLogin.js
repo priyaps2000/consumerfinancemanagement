@@ -1,5 +1,8 @@
 import React,{Component} from "react";
+import Navbar from "../components/Navbar";
 import withNavigateHook from '../components/withNavigateHook';
+import '../style/AdminLogin.css'
+
 
 // import { Link } from 'react-router-dom';
 
@@ -89,29 +92,31 @@ export class AdminLogin extends Component{
     render(){
         return(
             <div>
-                <h1>Admin Login</h1>
-                <div className="container">
-                    <form>
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                    <div className = "form-group">
-                        <label>Admin UserName:</label>  
-                        <input type="text" name="username" className="form-control" value={this.state.username}
-                        onChange={this.handleChange} validations={[required]} />
-                        <div className="errorMsg">{this.state.error.username}</div>
+                <Navbar />
+                <div className="admin-login-container">
+                    <div className="admin-login">
+                        <h1>Admin Login</h1>
+                        <form>
+                        {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                        {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                        <div className = "form-group">
+                            <label>Admin UserName:</label>  
+                            <input type="text" name="username" className="form-control" value={this.state.username}
+                            onChange={this.handleChange} validations={[required]} />
+                            <div className="errorMsg">{this.state.error.username}</div>
+                        </div>
+                        <div className = "form-group">
+                        <label>Password:</label>
+                        <input type="password" name="password" className="form-control" value={this.state.password}
+                            onChange={this.handleChange} validations={[required]}/>
+                        <div className="errorMsg">{this.state.error.password}</div>
+                        </div>
+                        <button className="btn btn-success admin-login-button" onClick={this.checkLogin}>Login</button>
+                        {/* <button className="btn btn-success" action="/PasswordResetForm">Change Password</button> */}
+                        {/* <Link to={"./ForgotPassword"}>Forgot Password</Link> */}
+                        </form>
                     </div>
-                    <div className = "form-group">
-                    <label>Password:</label>
-                    <input type="password" name="password" className="form-control" value={this.state.password}
-                        onChange={this.handleChange} validations={[required]}/>
-                    <div className="errorMsg">{this.state.error.password}</div>
-                    </div>
-                    <button className="btn btn-success" onClick={this.checkLogin}>Login</button>
-                    {/* <button className="btn btn-success" action="/PasswordResetForm">Change Password</button> */}
-                    {/* <Link to={"./ForgotPassword"}>Forgot Password</Link> */}
-                    
-                    </form>
-                </div>
+                </div>   
             </div>
         );
     }

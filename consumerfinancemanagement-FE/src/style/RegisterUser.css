@@ -1,0 +1,28 @@
+.errorMsg {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }
+
+.register-container{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.register-button{
+  margin-left: 20px;
+  background-color: #16557d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.row{
+  box-shadow: -5px 5px 15px #8080801c;
+  padding: 40px;
+  width: 400px;
+  margin: auto;
+}

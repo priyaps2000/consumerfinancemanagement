@@ -18,7 +18,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	List<Sale> getSaleData();
 	
 	@Modifying(clearAutomatically = true)
-	@Query(value = "UPDATE sale SET amountpaid = amountpaid+amount WHERE user_name = ?1", nativeQuery = true)
+	@Query(value = "UPDATE sale SET amountpaid = amountpaid+?2 WHERE user_name = ?1", nativeQuery = true)
 	void amountpaid(String userName, int amount);
 
 }

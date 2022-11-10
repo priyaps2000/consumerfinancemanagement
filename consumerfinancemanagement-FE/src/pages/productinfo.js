@@ -1,9 +1,10 @@
 import React,{Component} from "react";
 import axios from 'axios';
-import '../style/register.css'
+// import '../style/register.css'
 import '../style/ProductList.css';
 import withNavigateHook from '../components/withNavigateHook';
 import UserService from "../service/UserService";
+import '../style/productinfo.css';
 
 export class Productinfo extends Component{
 
@@ -94,62 +95,44 @@ export class Productinfo extends Component{
         }
     }
 
-    // fetchProduct(){
-    //     const rows = [];
-    //     for (let i = 0; i < this.state.productCount; i++) {
-    //         if(this.state.productList[i]){
-    //             rows.push(<div className="product">
-    //                     <img className="product-img" src={this.state.productList[i]["productURL"]}></img>
-    //                     <div className="product-details">
-    //                         <p className="product-name">{this.state.productList[i]["productName"]}</p>
-    //                         <p>Product details: {this.state.productList[i]["productDetails"]}</p>
-    //                         <p>Cost: Rs. {this.state.productList[i]["cost"]}/-</p>
-    //                         <button data-product-id={this.state.productList[i]["productId"]} onClick={(e) => console.log("click on product ID: ", e.target.getAttribute('data-product-id'))}>Buy Now</button>
-    //                     </div>
-    //                 </div>);
-    //         }
-    //     }
-    //     return <div className="product-container">{rows}</div>
-    // }      
-
     render(){
         return(
             <div>
-                <div className="navbar">
+                <div className="product-navbar">
                     <div className="text">
-                        <button className="logout" onClick={() => this.dashboard()}>CardDashboard</button>
+                        <button className="logout product-button" onClick={() => this.dashboard()}>CardDashboard</button>
                         <div className="user">
                             <a>Hi {this.state.name}</a>
-                            <button className="logout" onClick={() => this.logout()}>Logout</button>
+                            <button className="logout product-button" onClick={() => this.logout()}>Logout</button>
                         </div>
                     </div>
                 </div>
 
-                <div className="product">
-                    <img className="product-img" src={this.state.productURL}></img>
-                    <div className="product-details">
-                        <p className="product-name">{this.state.productName}</p>
-                        <p>Product details: {this.state.productDetails}</p>
-                        <p>Cost: Rs. {this.state.productCost}/-</p>
+                <div className="product-container">
+                    <div className="this-product">
+                        <img className="product-img" src={this.state.productURL}></img>
+                        <div className="product-details">
+                            <p className="product-name">{this.state.productName}</p>
+                            <p>Product details: {this.state.productDetails}</p>
+                            <p>Cost: Rs. {this.state.productCost}/-</p>
+                        </div>
+                    </div>
+                    
+                    <div className = "emi-container">
+                        <label> Slect EMI Option: </label>
+                        <select name="card" className="form-control" 
+                            value={this.state.EMI} onChange={(e) => this.setState({EMI : e.target.value})}>
+                                <option>Select</option>
+                                <option>1</option>
+                                <option>3</option>
+                                <option>6</option>
+                        </select>
+                        <label> Months</label>
+                        <br></br>
+                    <button className="product-button" onClick={() => this.purchaseProduct()}>Buy Now</button>
+                        <div className="errorMsg">{this.state.error.reply}</div>
                     </div>
                 </div>
-                
-                <div className = "Container">
-                    <label> Slect EMI Option: </label>
-                    <select name="card" className="form-control" 
-                        value={this.state.EMI} onChange={(e) => this.setState({EMI : e.target.value})}>
-                            <option>Select</option>
-                            <option>1</option>
-                            <option>3</option>
-                            <option>6</option>
-                    </select>
-                    <label> Months</label>
-                    <br></br>
-                <button onClick={() => this.purchaseProduct()}>Buy Now</button>
-                    <div className="errorMsg">{this.state.error.reply}</div>
-                </div>
-
-                {/* {this.fetchProductList()} */}
             </div>
         );
     }

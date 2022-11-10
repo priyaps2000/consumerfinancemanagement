@@ -1,5 +1,7 @@
 import React,{Component} from "react";
+import Navbar from "../components/Navbar";
 import withNavigateHook from '../components/withNavigateHook';
+import '../style/ForgotPassword.css'
 
 // import { Link } from 'react-router-dom';
 
@@ -150,42 +152,45 @@ export class ForgotPassword extends Component{
     render(){
         return(
             <div>
-                <h1>Forgot Password</h1>
-                <div className="container">
-                    <form>
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    <div className = "form-group">
-                        <label>User Email-ID:</label>  
-                        <input type="text" name="emailid" className="form-control" value={this.state.emailid}
-                        onChange={this.handleChange} validations={[required]} />
-                        <div className="errorMsg">{this.state.error.emailid}</div>
-                    </div>
-                    <button className="btn btn-success" onClick={this.sendOTP}>Send OTP</button>
+                <Navbar />
+                <div className="forgot-password-container">
+                    <div className="forgot-password">
+                    <h1>Forgot Password</h1>
+                        <form>
+                        {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                        <div className = "form-group">
+                            <label>User Email-ID:</label>  
+                            <input type="text" name="emailid" className="form-control" value={this.state.emailid}
+                            onChange={this.handleChange} validations={[required]} />
+                            <div className="errorMsg">{this.state.error.emailid}</div>
+                        </div>
+                        <button className="btn btn-success forgot-button" onClick={this.sendOTP}>Send OTP</button>
 
-                    <div className = "form-group">
-                    <label>OTP:</label>
-                    <input type="password" name="token" className="form-control" value={this.state.token}
-                        onChange={this.handleChange} validations={[required]}/>
-                    <div className="errorMsg">{this.state.error.token}</div>
-                    </div><br></br>
-                    <div className = "form-group">
-                    <label>New Password:</label>
-                    <input type="password" name="password" className="form-control" value={this.state.password}
-                        onChange={this.handleChange} validations={[required]}/>
-                        <div className="errorMsg">{this.state.error.password}</div>
+                        <div className = "form-group">
+                        <label>OTP:</label>
+                        <input type="password" name="token" className="form-control" value={this.state.token}
+                            onChange={this.handleChange} validations={[required]}/>
+                        <div className="errorMsg">{this.state.error.token}</div>
+                        </div><br></br>
+                        <div className = "form-group">
+                        <label>New Password:</label>
+                        <input type="password" name="password" className="form-control" value={this.state.password}
+                            onChange={this.handleChange} validations={[required]}/>
+                            <div className="errorMsg">{this.state.error.password}</div>
+                        </div>
+                        <div className = "form-group">
+                        <label>Confirm Password:</label>
+                        <input type="password" name="cpassword" className="form-control" value={this.state.cpassword}
+                            onChange={this.handleChange} validations={[required]}/>
+                        <div className="errorMsg">{this.state.error.cpassword}</div>
+                        </div>
+                        <button className="btn btn-success forgot-button" onClick={this.verifyOTP}>Verify OTP and Change Password</button>
+                        {/* <button className="btn btn-success" action="/PasswordResetForm">Change Password</button> */}
+                        {/* <Link to={"./ForgotPassword"}>Forgot Password</Link> */}
+                        
+                        </form>
                     </div>
-                    <div className = "form-group">
-                    <label>Confirm Password:</label>
-                    <input type="password" name="cpassword" className="form-control" value={this.state.cpassword}
-                        onChange={this.handleChange} validations={[required]}/>
-                    <div className="errorMsg">{this.state.error.cpassword}</div>
-                    </div>
-                    <button className="btn btn-success" onClick={this.verifyOTP}>Verify OTP and Change Password</button>
-                    {/* <button className="btn btn-success" action="/PasswordResetForm">Change Password</button> */}
-                    {/* <Link to={"./ForgotPassword"}>Forgot Password</Link> */}
-                    
-                    </form>
-                </div>
+                </div>      
             </div>
         );
     }

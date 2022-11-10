@@ -1,30 +1,18 @@
 import React from 'react';
-import {
-Nav,
-NavLink,
-Bars,
-NavMenu,
-NavBtn,
-NavBtnLink,
-} from './NavbarElements';
+import { NavLink as Link } from 'react-router-dom';
+import 'D:/Java Bootcamp WF/consumerfinancemanagement/consumerfinancemanagement-FE/src/style/Navbar.css';
 
 const Navbar = () => {
 return (
-	<>
-	<Nav>
-		<Bars />
-
-		<NavMenu>
-		<NavLink to='/login' activeStyle>
-			Login
-		</NavLink>
-		
-		<NavLink to='/sign-up' activeStyle>
-			Register
-		</NavLink>
-		</NavMenu>
-	</Nav>
-	</>
+	<div className='global-navbar'>
+		<div className='company-name'>
+			<p>Five Star Personal Finance Limited</p>
+		</div>
+		<div className='user-elements'>
+			<Link className="link" to='/login' activeStyle>Login</Link>
+			<Link className="link" to='/sign-up' activeStyle>Register</Link>
+		</div>
+	</div>
 );
 };
 
