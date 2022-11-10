@@ -59,7 +59,7 @@ export class CardDashboard extends Component{
         for (let i = 0; i < this.state.productCount; i++) {
             if(this.state.products[i]){
                 rows.push(<tr>
-                        <td>{this.state.products[i]["productId"]}</td> 
+                        <td>{this.state.products[i]["productName"]}</td> 
                         <td>{this.state.products[i]["purchaseDate"].substring(0,10)}</td> 
                         <td>{this.state.products[i]["totalAmount"]} </td>
                         <td>{this.state.products[i]["amountpaid"]}</td>
