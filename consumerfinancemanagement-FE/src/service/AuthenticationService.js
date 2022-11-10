@@ -23,9 +23,13 @@ class AuthenticationService{
         return axios.post(API_URL+"password/reset/"+user["token"], user["password"], {headers: {"Content-Type": "text/plain"}});
     }
 
+    activateUser(user){
+        return axios.post(API_URL+"admin/ActivationStatus/"+user["username"], user["response"], {headers: {"Content-Type": "text/plain"}});
+    }
+
     registerDealer(dealer){
         return axios.post(API_URL1, dealer);
-       }
+    }
 
     registerSuccessfulLogin(username, password) {
       

@@ -72,6 +72,10 @@ export class AdminLogin extends Component{
                     this.setState({hasLoginFailed:false})
                     this.props.navigation('/admindashboard');
                 }
+                else{
+                    this.setState({ showSuccessMessage: false })
+                    this.setState({ hasLoginFailed: true })
+                }
             }).catch(() => {
                 console.log(this.state.username)
                 this.setState({ showSuccessMessage: true })

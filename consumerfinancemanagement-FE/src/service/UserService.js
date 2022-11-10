@@ -12,6 +12,10 @@ class UserService {
         
         return axios.post(USER_URL + "user/", JSON.parse(req));
     }
+
+    purchaseProduct(user){
+        return axios.post("http://localhost:8080/consumerfinancemanagement/api/sale/buyNow/" + user["username"] + "/" + user["productid"] + "/" + user["EMI"], {headers: {"Content-Type": "text/plain"}})
+    }
 }
 
 export default new UserService();

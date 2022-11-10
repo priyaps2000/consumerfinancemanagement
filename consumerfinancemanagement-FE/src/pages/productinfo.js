@@ -1,42 +1,158 @@
+import React,{Component} from "react";
+import axios from 'axios';
+import '../style/register.css'
+import '../style/ProductList.css';
+import withNavigateHook from '../components/withNavigateHook';
+import UserService from "../service/UserService";
 
-import React, { Component } from 'react'
-import { LinkHTMLAttributes } from 'react';
-{/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
-integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
-crossorigin="anonymous"></link> */}
+export class Productinfo extends Component{
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" ></link>
+    constructor(props) {
+        super(props)
+        this.state ={
+            username:  sessionStorage.getItem('username'),
+            name:'',
+            productid: sessionStorage.getItem('ProductId'),
+            productName: '',
+            productDetails: '',
+            productCost: '',
+            productURL : '',
+            productPurchaseCount : '',
+            EMI : '',
+            response : "",
+            error:{}
+        }
+        this.purchaseProduct=this.purchaseProduct.bind(this);
+    }
 
+    handleChange(e) {
+        // this.state.EMI =  e.target.value;
+        this.setState({
+            EMI : e.target.value
+        });
+    }
 
+    logout(){
+        sessionStorage.clear()
+        this.props.navigation('/login');
+    }
 
-class Productlist extends Component{
+    dashboard(){
+        this.props.navigation('/users/cardDashboard');
+    }
+
+    componentDidMount() {
+
+        axios.get("http://localhost:8080/consumerfinancemanagement/api/user/find/"+this.state.username).then((res) => {
+            this.setState({name: res["data"]["name"]})
+        })
+
+        axios.get("http://localhost:8080/consumerfinancemanagement/api/product/getProduct/" + this.state.productid).then((res)=>{
+            this.setState({productName: res["data"]["productName"]});
+            this.setState({productDetails: res["data"]["productDetails"]});
+            this.setState({productCost: res["data"]["cost"]});
+            this.setState({productURL: res["data"]["productURL"]});
+            this.setState({productPurchaseCount: res["data"]["purchaseCount"]});
+        })
+
+        axios.post("http://localhost:8080/consumerfinancemanagement/api/sale/buyNow/" + this.state.username + "/" + this.state.productid + "/" + this.state.EMI).then((res)=>{
+            this.setState({response: res["data"]});
+        })
+    }
+
+    validateEMI(){
+        let error = {};
+        let formIsValid = true;
+        if(!this.state.EMI)
+        {
+            formIsValid = false;
+            error["reply"] = "Please Choose the EMI Option";
+        }
+        this.setState({
+            error: error
+        });
+        return formIsValid;
+    }
+
+    purchaseProduct(){
+        if(this.validateEMI()){
+            let user={username:this.state.username, productid:this.state.productid, EMI:this.state.EMI};
+            UserService.purchaseProduct(user).then(response => {
+                this.state.res = response["data"]
+                console.log("response from Sales BE", response["data"]);
+                console.log(this.state.EMI)
+                let error = {};
+                error["reply"] = this.state.res;
+                this.setState({
+                    error: error
+                });
+            }).catch(() => {
+                console.log(this.state.username)
+                this.setState({ showSuccessMessage: true })
+                this.setState({ hasLoginFailed: false })
+            });
+        }
+    }
+
+    // fetchProduct(){
+    //     const rows = [];
+    //     for (let i = 0; i < this.state.productCount; i++) {
+    //         if(this.state.productList[i]){
+    //             rows.push(<div className="product">
+    //                     <img className="product-img" src={this.state.productList[i]["productURL"]}></img>
+    //                     <div className="product-details">
+    //                         <p className="product-name">{this.state.productList[i]["productName"]}</p>
+    //                         <p>Product details: {this.state.productList[i]["productDetails"]}</p>
+    //                         <p>Cost: Rs. {this.state.productList[i]["cost"]}/-</p>
+    //                         <button data-product-id={this.state.productList[i]["productId"]} onClick={(e) => console.log("click on product ID: ", e.target.getAttribute('data-product-id'))}>Buy Now</button>
+    //                     </div>
+    //                 </div>);
+    //         }
+    //     }
+    //     return <div className="product-container">{rows}</div>
+    // }      
+
     render(){
-        return(  
-            <div class="list">
-                 <div class="info">
-<section><section class="child"><a href="/productinfo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAGFBMVEWAgID////R0dF5eXnCwsLn5+e/v790dHS6bEk4AAABJ0lEQVR4nO3PgRHCIADAQCql7L+xLuF5j/kJknGdbvw64Os69HXo69DXoa9DX4e+Dn1/cLheZ1vj2fNk+xn3HCebd4e6Dn0d+jr0dejr0Nehr0Nfh74OfR36OvR16OvQ16GvQ1+Hvg59Hfo69HXo69DXoa9DX4e+Dn0d+jr0dejr0Nehr0Nfh74OfR36OvR16OvQ16GvQ1+Hvg59Hfo69HXo69DXoa9DX4e+Dn0d+jr0dejr0Nehr0Nfh74OfR36OvR16OvQ16GvQ1+Hvg59Hfo69HXo69DXoa9DX4e+Dn0d+jr0dejr0Nehr0Nfh74OfR36OvR16OvQ16GvQ1+Hvg59Hfo69HXo+xw+e55sP2O9zrbGdboOfR36OvR16OvQ16GvQ1+HvjfTlzEPcut0GAAAAABJRU5ErkJggg==" alt="Image" height="1200" width="350" /></a></section>
-<section class="child"><h4>Product Name</h4>
-<p>Description about the product Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-<h5> Cost: $200 </h5></section></section>
-    </div>
+        return(
+            <div>
+                <div className="navbar">
+                    <div className="text">
+                        <button className="logout" onClick={() => this.dashboard()}>CardDashboard</button>
+                        <div className="user">
+                            <a>Hi {this.state.name}</a>
+                            <button className="logout" onClick={() => this.logout()}>Logout</button>
+                        </div>
+                    </div>
+                </div>
 
-  <center> <div><h5>EMI PERIOD</h5> <div class="emi"> <button>  3 MONTHS  </button></div></div>
-         <h5>EMI STARTING 6000PM</h5>
-      <div class="pay"> <button>  Pay Now  </button></div>
-      <div class="terms"><h6><a><u>Terms and conditions</u></a></h6></div> </center>
-    
-       
-    
-    </div>
+                <div className="product">
+                    <img className="product-img" src={this.state.productURL}></img>
+                    <div className="product-details">
+                        <p className="product-name">{this.state.productName}</p>
+                        <p>Product details: {this.state.productDetails}</p>
+                        <p>Cost: Rs. {this.state.productCost}/-</p>
+                    </div>
+                </div>
+                
+                <div className = "Container">
+                    <label> Slect EMI Option: </label>
+                    <select name="card" className="form-control" 
+                        value={this.state.EMI} onChange={(e) => this.setState({EMI : e.target.value})}>
+                            <option>Select</option>
+                            <option>1</option>
+                            <option>3</option>
+                            <option>6</option>
+                    </select>
+                    <label> Months</label>
+                    <br></br>
+                <button onClick={() => this.purchaseProduct()}>Buy Now</button>
+                    <div className="errorMsg">{this.state.error.reply}</div>
+                </div>
 
-       
-    
-
-        
-           )
+                {/* {this.fetchProductList()} */}
+            </div>
+        );
     }
 }
 
-export default Productlist;
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+export default withNavigateHook(Productinfo);

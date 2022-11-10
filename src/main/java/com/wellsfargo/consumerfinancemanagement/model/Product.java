@@ -25,9 +25,9 @@ public class Product implements Serializable {
 	
 	private String ProductURL;
 	
-	private int Cost;
+	private Long Cost;
 	
-	private int purchaseCount;
+	private Long purchaseCount;
 
 	public Product() {
 		super();
@@ -66,20 +66,20 @@ public class Product implements Serializable {
 		ProductURL = productURL;
 	}
 
-	public int getCost() {
+	public Long getCost() {
 		return Cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(Long cost) {
 		Cost = cost;
 	}
 	
-	public int getPurchaseCount() {
+	public Long getPurchaseCount() {
 		return purchaseCount;
 	}
 
-	public void setPurchaseCount(int purchaseCount) {
-		this.purchaseCount = purchaseCount;
+	public void setPurchaseCount() {
+		this.purchaseCount = 0L;
 	}
 
 	

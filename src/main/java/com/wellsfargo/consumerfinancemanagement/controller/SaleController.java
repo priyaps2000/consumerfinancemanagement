@@ -43,9 +43,10 @@ public class SaleController {
 		
 		Product product = pservice.getProductCost(productId);
 		int availableLimit = userCard.getTotalCredit()-userCard.getCreditUsed();
+		int productCost = product.getCost().intValue();
 		
 		
-		if(product.getCost() > availableLimit ) {
+		if(productCost > availableLimit ) {
 			return("Oops! You don't have enough amount in you card to buy this product.");
 		}
 		
@@ -59,7 +60,7 @@ public class SaleController {
 	    s1.setPurchaseDate(new Date());
 		s1.getPurchaseDate();
 		
-		s1.setTotalAmount(product.getCost());
+		s1.setTotalAmount(productCost);
 		
 		int amountPaid = (int)Math.ceil(s1.getTotalAmount()/tenurePeriod);
 		cservice.debitAmount(username, amountPaid);

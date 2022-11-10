@@ -1,8 +1,9 @@
 import React,{Component} from "react";
 import axios from 'axios';
 import '../style/ProductList.css';
+import withNavigateHook from '../components/withNavigateHook';
 
-export default class ProductList extends Component{
+export class ProductList extends Component{
 
     constructor(props) {
         super(props)
@@ -13,6 +14,16 @@ export default class ProductList extends Component{
             productCount: ''
         }
         this.fetchProductList=this.fetchProductList.bind(this);
+        this.gotoProductinfo = this.gotoProductinfo.bind(this);
+    }
+
+    logout(){
+        sessionStorage.clear()
+        this.props.navigation('/login');
+    }
+
+    dashboard(){
+        this.props.navigation('/users/cardDashboard');
     }
 
     componentDidMount() {
@@ -28,6 +39,11 @@ export default class ProductList extends Component{
         })
     }
 
+    gotoProductinfo(e) {
+        sessionStorage.setItem("ProductId", e.target.getAttribute('data-product-id'))
+        this.props.navigation('/users/productlist/productinfo')
+    }
+
     fetchProductList(){
         const rows = [];
         for (let i = 0; i < this.state.productCount; i++) {
@@ -38,7 +54,7 @@ export default class ProductList extends Component{
                             <p className="product-name">{this.state.productList[i]["productName"]}</p>
                             <p>Product details: {this.state.productList[i]["productDetails"]}</p>
                             <p>Cost: Rs. {this.state.productList[i]["cost"]}/-</p>
-                            <button data-product-id={this.state.productList[i]["productId"]} onClick={(e) => console.log("click on product ID: ", e.target.getAttribute('data-product-id'))}>Buy Now</button>
+                            <button data-product-id={this.state.productList[i]["productId"]} onClick={(e) => {this.gotoProductinfo(e)}}>Buy Now</button>
                         </div>
                     </div>);
             }
@@ -51,10 +67,10 @@ export default class ProductList extends Component{
             <div>
                 <div className="navbar">
                     <div className="text">
-                        <a>Dashboard</a>
+                        <button className="logout" onClick={() => this.dashboard()}>CardDashboard</button>
                         <div className="user">
                             <a>Hi {this.state.name}</a>
-                            <a className="logout" onClick={() => sessionStorage.removeItem('username')}>Logout</a>
+                            <button className="logout" onClick={() => this.logout()}>Logout</button>
                         </div>
                     </div>
                 </div>
@@ -63,4 +79,5 @@ export default class ProductList extends Component{
         );
     }
 }
-   
+
+export default withNavigateHook(ProductList);

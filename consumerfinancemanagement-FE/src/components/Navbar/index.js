@@ -22,9 +22,6 @@ return (
 		<NavLink to='/sign-up' activeStyle>
 			Register
 		</NavLink>
-		<NavLink to='/users' activeStyle>
-			Users
-		</NavLink>
 		</NavMenu>
 	</Nav>
 	</>

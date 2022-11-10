@@ -9,6 +9,9 @@ import UserList from './components/Navbar/UserList';
 import Products from './pages/ProductList';
 import Adminlogin from './pages/AdminLogin'
 import ForgotPassword from './pages/ForgotPassword';
+import CardDashboard from './pages/CardDashboard';
+import Productinfo from './pages/productinfo';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
 return (
@@ -23,8 +26,11 @@ return (
 		<Route path='/sign-up' element={<Form />} />
 		<Route path='/users' element={<UserList />} />
 		<Route path='/login/admin' element={<Adminlogin />} />
+		<Route path='/admindashboard' element={<AdminDashboard />} />
 		<Route path='/login/forgotpassword' element={<ForgotPassword />} />
 		<Route path='/users/productlist' element={<Products />} />
+		<Route path='/users/productlist/productinfo' element={<Productinfo />} />
+		<Route path='/users/cardDashboard' element={<CardDashboard />} />
 	</Routes>
 	</Router>
 );

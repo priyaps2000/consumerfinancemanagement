@@ -78,6 +78,10 @@ export class Login extends Component{
                     sessionStorage.setItem('username', this.state.email);
                     this.props.navigation('/users/productlist');
                 }
+                else{
+                    this.setState({ showSuccessMessage: false })
+                    this.setState({ hasLoginFailed: true })
+                }
             }).catch(() => {
                 this.setState({ showSuccessMessage: true })
                 this.setState({ hasLoginFailed: false })
