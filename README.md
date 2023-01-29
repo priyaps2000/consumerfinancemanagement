@@ -4,6 +4,8 @@ This repository contains the source code of a web-application based on consumer 
 
 An overview of application is included in [Consumer Finance Management System (Team-1).pdf](https://github.com/priyaps2000/consumerfinancemanagement/files/10037639/Consumer.Finance.Management.System.Team-1.pdf)
 
+Detailed description can be found in [case study](https://github.com/priyaps2000/consumerfinancemanagement/blob/master/Capstone%20Project%20Case%20Study.pdf)
+
 ## Key Tools and Technologies
 
 ### Front-end
